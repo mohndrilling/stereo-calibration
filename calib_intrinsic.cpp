@@ -29,9 +29,15 @@ void setup_calibration(int board_width, int board_height, int num_imgs,
   Size board_size = Size(board_width, board_height);
   int board_n = board_width * board_height;
 
-  for (int k = 1; k <= num_imgs; k++) {
+  for (int k = 0; k <= num_imgs-1; k++) {
     char img_file[100];
-    sprintf(img_file, "%s%s%d.%s", imgs_directory, imgs_filename, k, extension);
+    if (k<10)
+    {
+      sprintf(img_file, "%s%s0%d.%s", imgs_directory, imgs_filename, k, extension);
+    }
+    else{
+      sprintf(img_file, "%s%s%d.%s", imgs_directory, imgs_filename, k, extension);
+    }
     if(!doesExist(img_file))
       continue;
     img = imread(img_file, CV_LOAD_IMAGE_COLOR);

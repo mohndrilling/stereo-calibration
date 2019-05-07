@@ -47,8 +47,8 @@ For example, the command for the test images in `calib_imgs/1/` would be
 
 REALSENSE
 ```bash
-./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "left" -o "cam_left.yml" -e "png"
-./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "right" -o "cam_right.yml" -e "png"
+./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "left-00" -o "cam_left.yml" -e "png"
+./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "right-00" -o "cam_right.yml" -e "png"
 ```
 
 ### Stereo calibration for extrinisics
