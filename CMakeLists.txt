@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 2.8.11)
 project(CALIB_CAM)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(GCC_COMPILE_FLAGS "-fno-stack-protector")
+
+add_definitions(${GCC_COMPILE_FLAGS})
 
 find_package(OpenCV REQUIRED)
 include_directories($(OpenCV_INCLUDE_DIRS))

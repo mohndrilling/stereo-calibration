@@ -20,16 +20,38 @@ void load_image_points(int board_width, int board_height, int num_imgs, float sq
                       char* leftimg_dir, char* rightimg_dir, char* leftimg_filename, char* rightimg_filename) {
 
   Size board_size = Size(board_width, board_height);
+  //Size board_size = Size(8, 6);
   int board_n = board_width * board_height;
 
-  for (int i = 1; i <= num_imgs; i++) {
-    char left_img[100], right_img[100];
-    sprintf(left_img, "%s%s%d.jpg", leftimg_dir, leftimg_filename, i);
-    sprintf(right_img, "%s%s%d.jpg", rightimg_dir, rightimg_filename, i);
-    img1 = imread(left_img, CV_LOAD_IMAGE_COLOR);
-    img2 = imread(right_img, CV_LOAD_IMAGE_COLOR);
+  for (int i = 0; i <= num_imgs-1; i++) {
+    char left_img[200], right_img[200];
+
+    if ( i < 10 )
+    {
+      sprintf(left_img, "%s%s0%d.jpg", leftimg_dir, leftimg_filename, i);
+      sprintf(right_img, "%s%s0%d.jpg", rightimg_dir, rightimg_filename, i);
+    }else
+    {
+      sprintf(left_img, "%s%s%d.jpg", leftimg_dir, leftimg_filename, i);
+      sprintf(right_img, "%s%s%d.jpg", rightimg_dir, rightimg_filename, i);
+    }
+    /*img1 = imread(left_img, CV_LOAD_IMAGE_ANYCOLOR);
+    img2 = imread(right_img, CV_LOAD_IMAGE_ANYCOLOR);
     cvtColor(img1, gray1, CV_BGR2GRAY);
-    cvtColor(img2, gray2, CV_BGR2GRAY);
+    cvtColor(img2, gray2, CV_BGR2GRAY);*/
+    
+    gray1 = imread(left_img, CV_LOAD_IMAGE_GRAYSCALE);
+    gray2 = imread(right_img, CV_LOAD_IMAGE_GRAYSCALE);
+
+    cvtColor(gray1, img1, CV_GRAY2BGR);
+    cvtColor(gray2, img2, CV_GRAY2BGR);
+
+    // Debug
+    /*printf("LEFT IMG DIR: %s\n",left_img);
+    printf("RIGHT IMG DIR: %s\n",right_img);
+    cout << "img2 size: " << img2.type() << endl;
+    cout << "board_size: " << board_size << endl;*/
+    
 
     bool found1 = false, found2 = false;
 

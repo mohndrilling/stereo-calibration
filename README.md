@@ -45,6 +45,12 @@ For example, the command for the test images in `calib_imgs/1/` would be
 ./calibrate -w 9 -h 6 -n 27 -s 0.02423 -d "../calib_imgs/1/" -i "left" -o "cam_left.yml" -e "jpg"
 ```
 
+REALSENSE
+```bash
+./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "left" -o "cam_left.yml" -e "png"
+./calibrate -w 8 -h 6 -n 47 -s 0.0809556 -d "/home/$USER/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/" -i "right" -o "cam_right.yml" -e "png"
+```
+
 ### Stereo calibration for extrinisics
 
 Once you have the intrinsics calibrated for both the left and the right cameras, you can use their intrinsics to calibrate the extrinsics between them.
@@ -57,6 +63,11 @@ For example, if you calibrated the left and the right cameras using the images i
 
 ```bash
 ./calibrate_stereo -n 27 -u cam_left.yml -v cam_right.yml -L ../calib_imgs/1/ -R ../calib_imgs/1/ -l left -r right -o cam_stereo.yml
+```
+
+REALSENSE
+```bash
+./calibrate_stereo -n 47 -u cam_left.yml -v cam_right.yml -L /home/eirik/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/ -R /home/eirik/git_repos/realsense_MT/calibration/custom/chessboard/dry/large_chessboard/stereo_camera/2019.05.03/imgs/ -l "left-00" -r "right-00" -o cam_stereo.yml
 ```
 
 ### Undistortion and Rectification
